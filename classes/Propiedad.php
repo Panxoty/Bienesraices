@@ -134,7 +134,7 @@ class Propiedad
     public static function find($id)
     {
         $query = "SELECT * FROM propiedades WHERE id = $id";
-        $resultado = self::consultarSQL($query);
+        $resultado = self::consultarSQL($query); //Pasamos el query a la función consultarSQL
         return array_shift($resultado); //-> Retorna el primer elemento del array
     }
 

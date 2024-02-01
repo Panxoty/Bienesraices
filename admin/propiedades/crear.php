@@ -70,7 +70,7 @@ incluirTemplate('header');
         </div>
     <?php endforeach; ?>
     <form class="formulario" method="POST" action="/admin/propiedades/crear.php" enctype="multipart/form-data">
-        <?php include '../../includes/templates/formulario_propiedades.php'; ?>
+        <?php include '../../includes/templates/formulario_propiedades.php'; ?> <!--Reutilizamos codigo-->
         <input type="submit" value="Crear propiedad" class="boton boton-verde">
     </form>
 </main>

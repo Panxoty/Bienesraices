@@ -25,9 +25,12 @@ $errores = [];
 
 // *Ejecutar el código después de que el usuario envia el formulario* //
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //Asignar los atributos
+    $args = $_POST['propiedad'];
 
     $propiedad->sincronizar($_POST);
     debuguear($propiedad);
+    //Asignar files hacia una variable.
     $imagen = $_FILES['imagen'];
 
     if (!$titulo) {
