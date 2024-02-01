@@ -1,0 +1,71 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.barra{
+    display: flex;
+    flex-direction: column;
+    padding-top: 3rem;
+    align-items: center;
+    @include m.tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+}
+.navegacion{
+    visibility: hidden; //-> Para que no se muestre en dispositivos moviles
+    opacity: 0;
+    transition: visibility .3s ease-in-out, opacity 0.3s linear, height 0.3s linear ; //-> Para que se muestre de manera suave
+    height: 0;
+    @include m.tablet { //Para que se muestren de manera correcta horizontalmente
+        display: flex;
+        gap: 2rem;
+        align-items: center; // ->Centramos verticalmente.
+        //para que se muestre de manera correcta si es mayor a 768px
+        visibility: visible;
+        opacity: 1;
+    }
+    a{
+        color: v.$blanco;
+        font-size: 1.8rem;
+        display: block; //-> Para cuando la pantalla sea dispositivo movil
+        text-align: center;
+    }
+}
+//MENU HAMBURGUESA
+.mobile-menu{ //-> Para que se muestre en dispositivos moviles
+    @include m.tablet {
+        display: none;
+    }
+    img{
+        width: 5rem;
+        margin: 2rem;
+    }
+}
+//Mostar el menu en dispositivos moviles
+.mostrar{
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+
+}
+//BOTONES DARKMODE
+.derecha{
+    display: flex; //-> Lo pone de ezquierda a derecha.
+    flex-direction: column;
+    align-items: center;
+    @include m.tablet { //Para que se muestren de manera correcta horizontalmente si es mayor a 768px
+        align-items: flex-end; 
+    }
+    .dark-mode-boton{ //Estilos a la imagen luna svg
+        width: 3rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        filter: invert(100%); //-> Para que se vea de color blanco
+        &:hover{
+            cursor: pointer;
+        }
+        @include m.tablet {
+            margin-top: 0;
+        }
+    }
+}

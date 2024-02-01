@@ -1,0 +1,44 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+/*Seccion anuncios en index.html*/
+@include m.tablet{ //Para cuando este en tamano de tablet se creen 3 columnas
+    .contenedor-anuncios{
+        @include m.grid(3,2rem);
+    }
+}
+.anuncio{ //Le damos estilo al contenedor o card que contiene imagen y informacion de propiedad
+    background-color: lighten(v.$gris,5);
+    border: 1px solid darken(v.$gris,10);
+    border-radius: 0.6rem;
+    margin-bottom: 3rem;
+    .contenido-anuncio{
+        padding: 2rem;
+    }
+    h3, p{ //Le quitamos el margen por defecto al heading y parrafo
+        margin: 0;
+    }
+
+}
+.precio{
+    color: v.$verde;
+    font-weight: bold;
+    font-size: 3rem;
+}
+.iconos-caracteristicas{ //ALINEAMOS EN COLUMNAS LOS ICONOS DEBAJO DEL PRECIO
+    display: flex;
+    list-style: none;
+    padding: 0;
+    max-width: 40rem;
+    li{
+        flex: 1;
+        display: flex;
+        gap: 1.5rem;
+        img{
+            flex: 0 0 3rem;
+        }
+        p{
+            font-weight: v.$black;
+        }
+    }
+}

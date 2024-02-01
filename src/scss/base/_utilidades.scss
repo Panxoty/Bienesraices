@@ -1,0 +1,15 @@
+@use 'base/variables' as v;
+.seccion {
+    margin-top: calc(v.$separacion / 2);
+    margin-bottom: calc(v.$separacion / 2);
+}
+.contenido-centrado {
+    max-width: 80rem;
+}
+.alinear-derecha{
+    display: flex; // para que funcione justify-content
+    justify-content: flex-end; // alinea a la derecha
+}
+.w-100{
+    width: 100%;
+}
