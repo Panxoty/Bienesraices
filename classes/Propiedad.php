@@ -130,7 +130,7 @@ class Propiedad
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
-    //Listar propiedad por id
+    //Busca un registro por su id
     public static function find($id)
     {
         $query = "SELECT * FROM propiedades WHERE id = $id";
