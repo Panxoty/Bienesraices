@@ -15,8 +15,7 @@ $vendedores = Vendedor::all();
 $resultado = $_GET['resultado'] ?? null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-
+    //Validar id
     $id = $_POST['id'];
     $id = filter_var($id, FILTER_VALIDATE_INT);
     if ($id) {
@@ -38,13 +37,15 @@ incluirTemplate('header');
 ?>
 <main class="contenedor seccion">
     <h1>Administrador de Bienes Raices</h1>
-    <?php if ($resultado == 1) : ?>
-        <p class="alerta exito">Creado Correctamente</p>
-    <?php elseif ($resultado == 2) : ?>
-        <p class="alerta exito">Actualizado Correctamente</p>
-    <?php elseif ($resultado == 3) : ?>
-        <p class="alerta exito">Eliminado Correctamente</p>
-    <?php endif; ?>
+    <?php
+    $mensaje = mostrarNotificacion(intval($resultado));
+    if ($mensaje) { ?>
+        <p class="alerta extito">
+            <?php echo s($mensaje) ?>
+        </p>
+
+    <?php } ?>
+
     <a href="/admin/propiedades/crear.php" class="boton boton-verde">Nueva Propiedad</a>
     <a href="/admin/vendedores/crear.php" class="boton boton-amarillo">Nuevo(a) Vendedor</a>
     <h2>Propiedades</h2>
