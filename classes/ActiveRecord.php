@@ -99,37 +99,13 @@ class ActiveRecord
     //Obtener los errores
     public static function getErrores()
     {
-        return self::$errores;
+        return static::$errores;
     }
     //Validación
     public function validar()
     {
-        if (!$this->titulo) {
-            self::$errores[] = "Debes añadir un titulo";
-        }
-        if (!$this->precio) {
-            self::$errores[] = "El precio es obligatorio";
-        }
-        if (strlen($this->descripcion) < 50) {
-            self::$errores[] = "La descripción es obligatoria y debe tener al menos 50 caracteres";
-        }
-        if (!$this->habitaciones) {
-            self::$errores[] = "El número de habitaciones es obligatorio";
-        }
-        if (!$this->wc) {
-            self::$errores[] = "El número de baños es obligatorio";
-        }
-        if (!$this->estacionamiento) {
-            self::$errores[] = "El número de estacionamientos es obligatorio";
-        }
-        if (!$this->vendedorId) {
-            self::$errores[] = "Elige un vendedor";
-        }
-        if (!$this->imagen) {
-            self::$errores[] = "La imagen es obligatoria";
-        }
-
-        return self::$errores;
+        static::$errores = [];
+        return static::$errores;
     }
     //Subida de archivos
     public function setImagen($imagen)
