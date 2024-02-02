@@ -47,6 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //Revisar que el arreglo de errores esté vacío
     if (empty($errores)) {
+        //Almacenar la imagen
+        $image->save(CARPETA_IMAGENES . $nombreImagen); //-> Guardamos la imagen en la carpeta
         $propiedad->guardar(); //-> Llamamos al método guardar
     }
 }
