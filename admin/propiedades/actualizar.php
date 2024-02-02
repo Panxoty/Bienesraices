@@ -1,6 +1,7 @@
 <?php // -> EP 326
 
 use App\Propiedad;
+use App\Vendedor;
 use Intervention\Image\ImageManagerStatic as Image;
 
 require '../../includes/app.php';
@@ -17,8 +18,7 @@ if (!$id) { //-> Si no es un entero redireccionamos
 $propiedad = Propiedad::find($id);
 
 // ** Obtener los datos de vendedores **//
-$consulta = "SELECT * FROM vendedores";
-$resultado = mysqli_query($db, $consulta);
+$vendedores = Vendedor::all();
 
 //Arreglo con mensajes de errores
 $errores = Propiedad::getErrores();
@@ -47,8 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //Revisar que el arreglo de errores esté vacío
     if (empty($errores)) {
-        //Almacenar la imagen
-        $image->save(CARPETA_IMAGENES . $nombreImagen); //-> Guardamos la imagen en la carpeta
+        if ($_FILES['propiedad']['tmp_name']['imagen']) {
+            //Almacenar la imagen
+            $image->save(CARPETA_IMAGENES . $nombreImagen); //-> Guardamos la imagen en la carpeta
+        }
         $propiedad->guardar(); //-> Llamamos al método guardar
     }
 }

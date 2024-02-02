@@ -81,7 +81,7 @@ class ActiveRecord
     public function atributos()
     {
         $atributos = [];
-        foreach (self::$columnasDB as $columna) {
+        foreach (static::$columnasDB as $columna) {
             if ($columna === 'id') continue; //Si la columna es igual a id, se salta la iteración
             $atributos[$columna] = $this->$columna;
         }
@@ -150,7 +150,7 @@ class ActiveRecord
         //Iterar resultados
         $array = [];
         while ($registo = $resultado->fetch_assoc()) {
-            $array[] = self::crearObjeto($registo); //Convertimos de array a objeto
+            $array[] = static::crearObjeto($registo); //Convertimos de array a objeto
         }
         //Liberar memoria
         $resultado->free();

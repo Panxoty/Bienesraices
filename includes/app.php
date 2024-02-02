@@ -9,7 +9,7 @@ $db = conectarDB();
 
 
 //Importamos clases
-use App\Propiedad;
+use App\ActiveRecord;
 
 //Pasamos la conexion a la base de datos a la clase Propiedad - EP 365.
-Propiedad::setDB($db);
+ActiveRecord::setDB($db);
