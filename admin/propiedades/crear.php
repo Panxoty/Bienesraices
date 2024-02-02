@@ -22,15 +22,15 @@ $errores = Propiedad::getErrores();
 //Ejecutar el código después de que el usuario envia el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $propiedad = new Propiedad($_POST); //-> Instanciamos la clase Propiedad
+    $propiedad = new Propiedad($_POST['propiedad']); //-> Instanciamos la clase Propiedad
 
 
     //* Generar un nombre único para cada imagen *//
     $nombreImagen = md5(uniqid(rand(), true)) . ".jpg"; //Capitulo 322
 
     //Realiza un rezise a la imagen con intervention
-    if ($_FILES['imagen']['tmp_name']) { //-> Si existe la imagen
-        $image = Image::make($_FILES['imagen']['tmp_name'])->fit(800, 600);
+    if ($_FILES['propiedad']['tmp_name']['imagen']) { //-> Si existe la imagen
+        $image = Image::make($_FILES['propiedad']['tmp_name']['imagen'])->fit(800, 600);
         $propiedad->setImagen($nombreImagen); //-> Seteamos el nombre de la imagen
     }
 
