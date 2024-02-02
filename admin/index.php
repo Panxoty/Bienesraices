@@ -9,7 +9,7 @@ use App\Vendedor;
 $propiedades = Propiedad::all();
 $vendedores = Vendedor::all();
 
-debuguear($vendedores);
+//debuguear($vendedores);
 
 //Asignamos el resultado de la direccion Line 92 de crear.php
 $resultado = $_GET['resultado'] ?? null;
