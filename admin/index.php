@@ -3,9 +3,13 @@ require '../includes/app.php';
 estaAutenticado();
 
 use App\Propiedad;
+use App\Vendedor;
 
 //Implementar metodo para obtener todas las propiedades.
 $propiedades = Propiedad::all();
+$vendedores = Vendedor::all();
+
+debuguear($vendedores);
 
 //Asignamos el resultado de la direccion Line 92 de crear.php
 $resultado = $_GET['resultado'] ?? null;
